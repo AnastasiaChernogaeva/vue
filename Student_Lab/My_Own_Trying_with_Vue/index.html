@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My_Own_Vue</title>
+        <link rel="stylesheet" href="add.css"/>
+    </head>
+
+
+    <body>
+
+
+        <div class="container pt-5" id="myVue">
+
+            <div class="form-control card">
+            <h1>{{title}}</h1>
+
+            <input type="text" :placeholder="text" :value='meaning' @input="newValue" />
+
+            <br/>
+
+            <input type="text" :placeholder="textType" v-model="inputValue" />
+
+            <br/>
+
+            <input type="text" :placeholder="textAmount" v-model="inputAmount"  />
+
+            <br/>
+
+            <!-- <h5>{{meaning}}</h5>
+            <h5>{{inputValue}}</h5> -->
+
+            <button class='btn bold primary' @click="addNewItem">Добавить</button>
+
+        </div>
+
+            <hr/>
+
+            <div class="card " v-if='info.length!==0'>
+
+                <h3>Все {{title}}</h3>
+            <ul class="list">
+                <li class="list-item" v-for="(item, idx) of info">
+
+                    <span>{{item.type}}</span>
+                    <span>{{item.name}}</span>
+
+
+                    <div class="change"> 
+                    <button class="btn priimary new" @click='changeIcriment(idx)'>+</button> <span> {{item.amount}} </span>
+                   
+                    <button  class="btn priimary new" @click='item.amount=item.amount-1'>-</button>
+                </div>
+
+                <button class="btn bold danger" @click="removeItem(idx)">Удалить</button>
+            </li>
+            </ul>
+        </div>
+
+        <div  class="card " v-else>Добавьте новый товар, и жить станет проще!</div>
+
+        <div class="card">Привоз ожидается через {{getInfo}} дней</div>
+
+        </div>
+
+
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="app.js"></script>
+    </body>
+
+</html>
